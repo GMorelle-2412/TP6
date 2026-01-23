@@ -9,20 +9,32 @@ Pour finir la saisie, appuyez sur la touche « ENTREE », qui possède le code A
 
 #include <stdio.h>
 #include <string.h>
+#include <conio.h>
 
 char mot_de_passe(char* a) {
-	char MotDePasse[100];
+	
+	int i = 0;
+	char choix = 0; 
 
 	/*saisie cacher*/
+	printf(" Entrez le mot de passe : ");
 
-	
+	while (choix != '\r') {//'\r' = touche entrez
+		choix = _getch();
 
-	/*printf("Entrez le mot de passe : ");*/
-	/*fgets(MotDePasse, 100, stdin);*/
-	
+		a[i] = choix;
+
+		printf("*");
+
+		i++;
+	}
+
+	printf_s("\n Votre mot de passe reel est :");
 
 	/*afficher*/
-	printf_s("Votre mot de passe reel est : %s", &MotDePasse);
+	for (int j = 0; j < i; j++) {
+		printf_s("%c", a[j]);
+	}
 
 	return 0; 
 }
