@@ -13,38 +13,61 @@ La quatrième, « trier », doit obligatoirement utiliser la fonction indice_min
 tableau. Pour cela, on utilisera un "tri à bulle".*/
 
 #include<stdio.h>
-
+#include<string.h>
 
 float Lire(float* a) {
-	int i = 0;
 	float sauve[20];
 
-	printf("Entrez les valeurs (pas plus de 20) : ");
-	
-	while (i < 20) {
-		scanf_s("%f\n", &a[i]);
+	printf("Entrez les valeurs (pas plus de 20) : \n");
 
-		if (a[i] == -1) {
-			break;
-		}
-		
-		i++;
+	for (int i = 0; i < 20; i++) {
+		scanf_s("%f", &a[i]);
 	}
+
+	printf("\n");
+
 	return 0;
 }
 
-int affiche(float*b) {
-	
+float affiche(float* b) {
+	printf("Affichage des resultats : \n");
+
 	for (int i = 0; i < 20; i++) {
 		printf_s("%f\n",b[i]);
 	}
 	
+	printf_s("\n");
+
+	return 0;
+}
+
+float indice_min(float* tab, int i, float* j) {
+	i = 0;
+	j[0] = tab[0];
+	
+	while (i < 20) {
+		if (j[0] > tab [i]){
+			j[0] = tab[i];
+		}
+		i++;
+	}
+
+	return j[0];
+}
+
+float trier(float a) {
+
 	return 0;
 }
 
 int main() {
 	float tab[20];
+	int a = 0;
+	float b[2];
 
 	Lire(tab);
 	affiche(tab);
+	float trie = indice_min(tab, a, b);
+	printf_s("La valeur la plus base est : %f\n",b[0]);
+	trier(trie);
 }
