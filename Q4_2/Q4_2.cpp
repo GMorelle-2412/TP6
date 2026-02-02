@@ -16,12 +16,17 @@ tableau. Pour cela, on utilisera un "tri à bulle".*/
 #include<string.h>
 
 float Lire(float* a) {
-	float sauve[20];
 
 	printf("Entrez les valeurs (pas plus de 20) : \n");
 
 	for (int i = 0; i < 20; i++) {
 		scanf_s("%f", &a[i]);
+		if(a[i] == -1){
+			//a[i] = NAN;
+			//while(i < 20){
+			
+			//}
+		}
 	}
 
 	printf("\n");
