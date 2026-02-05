@@ -17,57 +17,51 @@ tableau. Pour cela, on utilisera un "tri à bulle".*/
 
 float Lire(float* a) {
 	int sauve = 0;
+	int i = 0;
 
 	printf("Entrez les valeurs (pas plus de 20 et saisire -1 pour arreter la saisie) : \n");
 
-	for (int i = 0; i < 20; i++){
-		
+	while (i < 20){
 		scanf_s("%f", &a[i]);
 		if (a[i] == -1) {
-			while (i < 20) {
-				a[i] = 0;
-				i++;
-			}
+			sauve = i;
+			return sauve;
 		}
-		sauve++;
+		i++;
 	}
-
+	sauve = i;
 	return sauve;
 }
 
-float affiche(float* b) {
+float affiche(float* b, int max) {
 	printf("Affichage des resultats : \n");
 	
-	for (int j = 0; j < 20; j++) {
+	for (int j = 0; j < max; j++) {
 		printf_s("%f\n", b[j]);
 	}
 
 	return 0;
 }
 
-float indice_min(float* tab, int max) {
-	int i = 0;
-	int j[1];
+float indice_min(float* tab, int i2) {
+	if (tab[i2] > tab[i2 + 1]) {
+		
+		return tab[i2 + 1];
 
-	j[0] = tab[0];
-	
-	while (i < max - 1) {
-		if (j[0] > tab [i]){
-			j[0] = tab[i];
-		}
-		i++;
+	}else{
+		
+		return tab[i2];
+
 	}
-
-	return j[0];
 }
 
-float trier(float* tab, float trie) {
-	for (int j = 0; j < 20; j++) {
-		for (int i = 0; i < 20 - 1; i++) {
-			if (tab[i] > tab[i + 1]){
-				trie = tab[i + 1];
+float trier(float* tab, int i2, int max) {
+	for (int j = 0; j < max; j++) {
+		for (int i = 0; i < max - 1; i++) {
+			if (indice_min (tab, i) != tab[i]){
+				i2 = tab[i + 1];
 				tab[i + 1] = tab[i];
-				tab[i] = trie;
+				tab[i] = i2;
 			}
 		}
 	}
@@ -77,15 +71,15 @@ float trier(float* tab, float trie) {
 
 int main() {
 	float tab[20];
-	float b[2];
+	int i2 = 0;
 
 	int max = Lire(tab);
 
-	float trie = indice_min(tab, max);
+	indice_min(tab, i2);
 
-	trier(tab, trie);
+	trier(tab, i2, max);
 
-	affiche(tab);
+	affiche(tab, max);
 
 	return 0;
 }
